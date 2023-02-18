@@ -1,16 +1,71 @@
 <div class="main-report">
   <mat-tab-group>
+    <mat-tab label="Generación">
+      <form  [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)" class="form">
+        <mat-form-field class="form-element">
+          <input matInput placeholder="Reason" formControlName="reason">
+          <mat-error *ngIf="!formGroup.controls['reason'].valid && formGroup.controls['reason'].touched">
+            {{ getErrorReason() }}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-element">
+          <input matInput placeholder="Deparment" formControlName="deparment">
+          <mat-error *ngIf="!formGroup.controls['deparment'].valid && formGroup.controls['deparment'].touched">
+            Validar deparment
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-element">
+          <input matInput placeholder="ReportTo" formControlName="reportTo">
+          <mat-error *ngIf="!formGroup.controls['reportTo'].valid && formGroup.controls['reportTo'].touched">
+            validar reportTo
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Select Type Report</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let type of types" [value]="type.value">
+              {{type.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="form-element">
+          <input matInput placeholder="subject" formControlName="subject">
+          <mat-error *ngIf="!formGroup.controls['subject'].valid && formGroup.controls['subject'].touched">
+            valid subject
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-element">
+          <input matInput placeholder="title" formControlName="title">
+          <mat-error *ngIf="!formGroup.controls['title'].valid && formGroup.controls['title'].touched">
+           valid title
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-element">
+          <input matInput placeholder="justification" formControlName="justification">
+          <mat-error *ngIf="!formGroup.controls['justification'].valid && formGroup.controls['justification'].touched">
+           Valid justification
+          </mat-error>
+        </mat-form-field>
+
+      </form>
+    </mat-tab>
     <mat-tab label="Creado">
-      <div class="tab-report" >
+      <div class="tab-report">
         <mat-card class="report-card" *ngFor="let report of reports">
           <mat-card-header>
             <mat-card-title-group>
-              <mat-card-title>{{report.title}}</mat-card-title>
-              <mat-card-subtitle>{{report.type}}</mat-card-subtitle>
+              <mat-card-title>{{ report.title }}</mat-card-title>
+              <mat-card-subtitle>{{ report.type }}</mat-card-subtitle>
             </mat-card-title-group>
           </mat-card-header>
           <mat-card-content>
-            {{report.justification}}
+            {{ report.justification }}
           </mat-card-content>
         </mat-card>
       </div>
