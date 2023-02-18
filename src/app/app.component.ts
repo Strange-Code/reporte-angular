@@ -5,6 +5,7 @@ import {
   MatDialogRef,
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
+import { ReportStatus } from './enums/report.status.enum';
 import { ReportTypesDto } from './interfaces/reportComponents/reportType.dto';
 import { ReportService } from './report.service';
 
@@ -33,6 +34,7 @@ export class AppComponent implements OnInit {
   formGroup: FormGroup;
   name: string = '';
   animal: string = '';
+  selectedTabIndex = 1;
 
   constructor(
     private readonly reportService: ReportService,
@@ -43,8 +45,27 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAllReports();
-    this.createForm();
+    this.getAllReportsByStatus(ReportStatus.CREADO);
+    this.selectedTabIndex = 1;
+  }
+
+  onTabChanged($event: any) {
+    const index = $event.index;
+    switch (index) {
+      case 0:
+        break;
+      case 1:
+        this.getAllReportsByStatus(ReportStatus.CREADO);
+        break;
+      case 2:
+        this.getAllReportsByStatus(ReportStatus.EN_PROGRESO);
+        break;
+      case 3:
+        this.getAllReportsByStatus(ReportStatus.SOLUCIONADO);
+        break;
+      default:
+        break;
+    }
   }
 
   createForm() {
@@ -60,7 +81,29 @@ export class AppComponent implements OnInit {
   }
 
   onSubmit(data: any) {
-    console.log('Form data:', JSON.stringify(data));
+    const mockData = {
+      attached: [
+        {
+          type: 'pdf',
+          name: 'reporte.pdf',
+          url: 'url',
+        },
+      ],
+      ...data,
+    };
+    this.reportService.createReport(mockData).subscribe((res) => {
+      console.log('Form data response:', JSON.stringify(res));
+      //this.getAllReports();
+    });
+  }
+
+  updateReportStatus(id: string, reportStatus: string) {
+    return this.reportService
+      .updateReportStatus(id, reportStatus)
+      .subscribe((res) => {
+        console.log('Form data update status response:', JSON.stringify(res));
+        //this.getAllReportsByStatus();
+      });
   }
   /*   openDialog(): void {
     const dialogRef = this.dialog.open(ReportFormDialog, {
@@ -76,8 +119,8 @@ export class AppComponent implements OnInit {
   getErrorReason() {
     return 'Not valid reason';
   }
-  getAllReports() {
-    return this.reportService.getAllReports().subscribe((res) => {
+  getAllReportsByStatus(status: string) {
+    return this.reportService.getAllReportsByStatus(status).subscribe((res) => {
       this.reports = res.data;
     });
   }
