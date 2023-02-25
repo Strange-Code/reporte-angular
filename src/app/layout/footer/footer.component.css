@@ -1,0 +1,11 @@
+.footer{
+  background-color: #000000;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
+
+.footer > p {
+  color: white;
+  padding: 20px;
+}

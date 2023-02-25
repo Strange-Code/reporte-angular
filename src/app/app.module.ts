@@ -1,21 +1,15 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {MatTabsModule} from '@angular/material/tabs';
-import {MatCardModule} from '@angular/material/card';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-import {MatDialogModule} from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReactiveFormsModule } from '@angular/forms';
-import { MaterialModule } from './material.module';
-import { ModalRegisterComponent } from './modal-register/modal-register.component';
-import { ModalRegisterModule } from './modal-register/modal-register.module';
 import { ReportModule } from './report/report.module';
+import { LayoutModule } from './layout/layout.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -23,7 +17,7 @@ import { ReportModule } from './report/report.module';
     HttpClientModule,
     BrowserAnimationsModule,
     ReportModule,
-    ModalRegisterModule,
+    LayoutModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

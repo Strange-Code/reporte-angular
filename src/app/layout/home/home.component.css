@@ -1,0 +1,29 @@
+.home{
+  background-color: antiquewhite;
+  min-height: 100vh;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+
+.home > p {
+  font-size: 40px;
+  padding: 40px;
+}
+
+.home > a {
+  text-decoration: none;
+  color: black;
+}
+
+.home >a > .material-icons {
+  font-size:  40px;
+  overflow: visible;
+}
+
+.home > a:hover {
+  color: #f3dfa2;
+}
