@@ -9,6 +9,9 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material.module';
+import { ModalRegisterComponent } from './modal-register/modal-register.component';
+import { ModalRegisterModule } from './modal-register/modal-register.module';
+import { ReportModule } from './report/report.module';
 
 @NgModule({
   declarations: [
@@ -19,13 +22,8 @@ import { MaterialModule } from './material.module';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-
-    MatTabsModule,
-
-    ReactiveFormsModule,
-    MaterialModule,
-    MatCardModule,
-    MatDialogModule,
+    ReportModule,
+    ModalRegisterModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
