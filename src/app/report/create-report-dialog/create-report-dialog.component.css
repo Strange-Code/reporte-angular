@@ -1,0 +1,14 @@
+.create-report-dialog > p {
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  padding: 20px;
+  margin: 0px;
+}
+.createForm {
+  display: flex;
+  flex-flow: column nowrap;
+  max-width: 500px;
+  min-width: 100px;
+  padding: 50px;
+}

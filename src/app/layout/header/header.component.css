@@ -1,0 +1,18 @@
+.header{
+  background-color: black;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+}
+
+.header > p {
+  margin: 20px 20px;
+  color: #f3dfa2;
+}
+
+
+.header > .material-icons {
+  font-size: 25px;  color: #f3dfa2;
+}
