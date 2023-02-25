@@ -3,7 +3,7 @@
     [(selectedIndex)]="selectedTabIndex"
     (selectedTabChange)="onTabChanged($event)"
   >
-    <mat-tab label="Creado">
+    <mat-tab label="Created">
       <div class="tab-report">
         <mat-card class="report-card" *ngFor="let report of reports">
           <mat-card-header>
@@ -28,7 +28,7 @@
         </mat-card>
       </div>
     </mat-tab>
-    <mat-tab label="En proceso">
+    <mat-tab label="To process">
       <div class="tab-report">
         <mat-card class="report-card" *ngFor="let report of reports">
           <mat-card-header>
@@ -48,12 +48,12 @@
             class="button"
             (click)="updateReportStatus(report.id, 'Solucionado')"
           >
-            To process
+            To Solve
           </button>
         </mat-card>
       </div>
     </mat-tab>
-    <mat-tab label="Evaluado">
+    <mat-tab label="Solve">
       <div class="tab-report">
         <mat-card class="report-card" *ngFor="let report of reports">
           <mat-card-header>

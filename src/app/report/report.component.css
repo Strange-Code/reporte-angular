@@ -11,15 +11,37 @@
 .tab-report {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
   margin: 5%;
 }
 
 .report-card {
   width: 20%;
-  min-width: 200px;
+  height: auto;
+  min-width: 23%;
   max-width: 20%;
   margin: 10px;
+}
+
+.report-card > .mat-mdc-card-subtitle,
+.mat-mdc-card-title {
+  min-height: 0px;
+  color: #f3dfa2;
+}
+
+.report-card > .mat-mdc-card-content {
+  min-height: 100px;
+  color: white;
+}
+
+.report-card > button {
+  margin: 10px;
+  position: absolute;
+  width: 90%;
+  bottom: 10px;
+
+  color: #f3dfa2;
+  background-color: black;
 }
 
 .main-report > .add_report {
@@ -34,11 +56,11 @@
   position: fixed;
   right: 40px;
   bottom: 50px;
-  box-shadow: 3px 10px 24px -11px rgba(0,0,0,0.75);
-  -webkit-box-shadow: 3px 10px 24px -11px rgba(0,0,0,0.75);
-  -moz-box-shadow: 3px 10px 24px -11px rgba(0,0,0,0.75);
+  box-shadow: 3px 10px 24px -11px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 3px 10px 24px -11px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 3px 10px 24px -11px rgba(0, 0, 0, 0.75);
 }
 
-.main-report > .add_report >  .material-icons  {
+.main-report > .add_report > .material-icons {
   color: #f3dfa2;
 }
