@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ReportStatus } from '../enums/report.status.enum';
 import { ReportTypesDto } from '../interfaces/reportComponents/reportType.dto';
 import { ReportService } from '../report.service';
+import { CreateReportDialogComponent } from './create-report-dialog/create-report-dialog.component';
 
 @Component({
   selector: 'app-report',
@@ -12,85 +13,31 @@ import { ReportService } from '../report.service';
 })
 export class ReportComponent {
   reports: any;
-  types: ReportTypesDto[] = [
-    {
-      value: 'Alto',
-      viewValue: 'Reporte Alto',
-    },
-    {
-      value: 'Medio',
-      viewValue: 'Reporte Medio',
-    },
-    {
-      value: 'Bajo',
-      viewValue: 'Reporte Bajo',
-    },
-  ];
-
-  formGroup: FormGroup;
-  name: string = '';
-  animal: string = '';
-  selectedTabIndex = 1;
+  selectedTabIndex = 0;
 
   constructor(
     private readonly reportService: ReportService,
-    private formBuilder: FormBuilder,
     public dialog: MatDialog
-  ) {
-    this.formGroup = this.createForm();
-  }
+  ) {}
 
   ngOnInit(): void {
     this.getAllReportsByStatus(ReportStatus.CREADO);
-    this.selectedTabIndex = 1;
+    this.selectedTabIndex = 0;
   }
 
   onTabChanged($event: any) {
     const index = $event.index;
     switch (index) {
       case 0:
-        break;
-      case 1:
         this.getAllReportsByStatus(ReportStatus.CREADO);
         break;
-      case 2:
+      case 1:
         this.getAllReportsByStatus(ReportStatus.EN_PROGRESO);
         break;
-      case 3:
+      default:
         this.getAllReportsByStatus(ReportStatus.SOLUCIONADO);
         break;
-      default:
-        break;
     }
-  }
-
-  createForm() {
-    return this.formBuilder.group({
-      reason: [null, Validators.required],
-      deparment: [null, Validators.required],
-      reportTo: [null, Validators.required],
-      type: [null, Validators.required],
-      subject: [null, Validators.required],
-      title: [null, Validators.required],
-      justification: [null, Validators.required],
-    });
-  }
-
-  onSubmit(data: any) {
-    const mockData = {
-      attached: [
-        {
-          type: 'pdf',
-          name: 'reporte.pdf',
-          url: 'url',
-        },
-      ],
-      ...data,
-    };
-    this.reportService.createReport(mockData).subscribe((res) => {
-      console.log('Form data response:', JSON.stringify(res));
-      //this.getAllReports();
-    });
   }
 
   updateReportStatus(id: string, reportStatus: string) {
@@ -102,24 +49,20 @@ export class ReportComponent {
       });
   }
 
-  getErrorReason() {
-    return 'Not valid reason';
-  }
-
   getAllReportsByStatus(status: string) {
     return this.reportService.getAllReportsByStatus(status).subscribe((res) => {
       this.reports = res.data;
     });
   }
 
-    /* openDialog(): void {
-    const dialogRef = this.dialog.open(ModalRegisterComponent, {
-      data: { name: this.name, animal: this.animal },
+  openDialog(): void {
+    const dialogRef = this.dialog.open(CreateReportDialogComponent, {
+      data: { name: 'test' },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
-      this.animal = result;
+      this.onTabChanged({ index: this.selectedTabIndex });
+      console.log('The dialog was closed: ', JSON.stringify(result));
     });
-  } */
+  }
 }

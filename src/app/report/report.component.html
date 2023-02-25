@@ -3,109 +3,6 @@
     [(selectedIndex)]="selectedTabIndex"
     (selectedTabChange)="onTabChanged($event)"
   >
-    <mat-tab label="Generación">
-      <form
-        [formGroup]="formGroup"
-        (ngSubmit)="onSubmit(formGroup.value)"
-        class="createForm"
-      >
-        <mat-form-field class="form-element">
-          <input matInput placeholder="Reason" formControlName="reason" />
-          <mat-error
-            *ngIf="
-              !formGroup.controls['reason'].valid &&
-              formGroup.controls['reason'].touched
-            "
-          >
-            {{ getErrorReason() }}
-          </mat-error>
-        </mat-form-field>
-
-        <mat-form-field class="form-element">
-          <input matInput placeholder="Deparment" formControlName="deparment" />
-          <mat-error
-            *ngIf="
-              !formGroup.controls['deparment'].valid &&
-              formGroup.controls['deparment'].touched
-            "
-          >
-            Validar deparment
-          </mat-error>
-        </mat-form-field>
-
-        <mat-form-field class="form-element">
-          <input matInput placeholder="ReportTo" formControlName="reportTo" />
-          <mat-error
-            *ngIf="
-              !formGroup.controls['reportTo'].valid &&
-              formGroup.controls['reportTo'].touched
-            "
-          >
-            validar reportTo
-          </mat-error>
-        </mat-form-field>
-
-        <mat-form-field appearance="fill">
-          <mat-label>Select Type Report</mat-label>
-          <mat-select formControlName="type">
-            <mat-option *ngFor="let type of types" [value]="type.value">
-              {{ type.viewValue }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-
-        <mat-form-field class="form-element">
-          <input matInput placeholder="subject" formControlName="subject" />
-          <mat-error
-            *ngIf="
-              !formGroup.controls['subject'].valid &&
-              formGroup.controls['subject'].touched
-            "
-          >
-            valid subject
-          </mat-error>
-        </mat-form-field>
-
-        <mat-form-field class="form-element">
-          <input matInput placeholder="title" formControlName="title" />
-          <mat-error
-            *ngIf="
-              !formGroup.controls['title'].valid &&
-              formGroup.controls['title'].touched
-            "
-          >
-            valid title
-          </mat-error>
-        </mat-form-field>
-
-        <mat-form-field class="form-element">
-          <input
-            matInput
-            placeholder="justification"
-            formControlName="justification"
-          />
-          <mat-error
-            *ngIf="
-              !formGroup.controls['justification'].valid &&
-              formGroup.controls['justification'].touched
-            "
-          >
-            Valid justification
-          </mat-error>
-        </mat-form-field>
-
-        <div class="form-element">
-          <button
-            mat-raised-button
-            color="primary"
-            type="submit"
-            class="button"
-          >
-            Submit Form
-          </button>
-        </div>
-      </form>
-    </mat-tab>
     <mat-tab label="Creado">
       <div class="tab-report">
         <mat-card class="report-card" *ngFor="let report of reports">
@@ -182,4 +79,12 @@
       </div></mat-tab
     >
   </mat-tab-group>
+
+  <div class="add_report" (click)="openDialog()">
+    <mat-icon
+      aria-hidden="false"
+      aria-label="Go to report"
+      fontIcon="add"
+    ></mat-icon>
+  </div>
 </div>
