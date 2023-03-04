@@ -1,5 +1,5 @@
 <div class="home">
-  <p>Bienvenido @Nombre</p>
+  <p>Bienvenido {{nombre}}</p>
   <a [routerLink]="['/report']">
     <mat-icon
       aria-hidden="false"
@@ -7,4 +7,8 @@
       fontIcon="arrow_forward"
     ></mat-icon>
     </a>
+
+    <button mat-raised-button color="primary" type="submit" class="button" (click)="authService.SignOut()">
+      Logout
+    </button>
 </div>

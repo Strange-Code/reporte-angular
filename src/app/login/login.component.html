@@ -44,7 +44,7 @@
       </button>
       <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{ error }}</div>
     </form>
-    <button type="button">
+    <button type="button" class="btn googleBtn" (click)="authService.GoogleAuth()">
       Google Login
     </button>
 </div>

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { GoogleService } from './google.service';
 
 @Component({
   selector: 'app-login',
@@ -18,13 +19,10 @@ export class LoginComponent {
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
+    public authService: GoogleService,
     private router: Router,
   ) {
 
-        // redirect to home if already logged in
-      //   if (this.authenticationService.currentUserValue) {
-      //     this.router.navigate(['/']);
-      // }
       this.returnUrl = '';
     this.loginForm = this.createForm();
 
